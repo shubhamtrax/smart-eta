@@ -1,0 +1,123 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Note that some adapters may set a maximum length for the String type by default, please ensure your strings are long
+// enough when changing adapters.
+// See https://www.prisma.io/docs/orm/reference/prisma-schema-reference#string for more information
+datasource db {
+  provider = "sqlite"
+  url      = "file:dev.sqlite"
+}
+
+model Session {
+  id            String    @id
+  shop          String
+  state         String
+  isOnline      Boolean   @default(false)
+  scope         String?
+  expires       DateTime?
+  accessToken   String
+  userId        BigInt?
+  firstName     String?
+  lastName      String?
+  email         String?
+  accountOwner  Boolean   @default(false)
+  locale        String?
+  collaborator  Boolean?  @default(false)
+  emailVerified Boolean?  @default(false)
+  refreshToken        String?
+  refreshTokenExpires DateTime?
+}
+
+model DeliverySettings {
+  id               Int      @id @default(autoincrement())
+  shop             String   @unique
+  processingDays   Int      @default(1)
+  shippingDays     Int      @default(3)
+  cutoffTime       String   @default("14:00")
+  weekendDelivery  Boolean  @default(false)
+
+  dateFormat            String  @default("long") // "long" | "short" | "numeric"
+  timezone              String  @default("Asia/Kolkata")
+  defaultDeliveryDays   Int?    // fallback transit days when no PincodeRule matches
+  defaultCodAvailable   Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PincodeRule {
+  id            Int      @id @default(autoincrement())
+  shop          String
+
+  pincode       String
+  city          String?
+  state         String?
+
+  deliveryDays  Int
+
+  codAvailable  Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Holiday {
+  id    Int    @id @default(autoincrement())
+  shop  String
+  date  String // stored as "YYYY-MM-DD"
+  label String?
+
+  createdAt DateTime @default(now())
+
+  @@unique([shop, date])
+}
+
+model WidgetAnalytics {
+  id         Int      @id @default(autoincrement())
+  shop       String
+  productId  String?
+  pageType   String?
+  eventType  String
+
+  pincode    String?
+  available  Boolean?
+
+  createdAt DateTime @default(now())
+}
+
+model WidgetSettings {
+  id           Int    @id @default(autoincrement())
+  shop         String @unique
+
+  heading      String @default("Check Delivery Availability")
+  description  String @default("Enter your pincode to see delivery estimate.")
+  buttonText   String @default("Check")
+
+  accentColor  String @default("#111827")
+  cornerRadius Int    @default(14)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Extra-day modifiers layered on top of a pincode's base transit time.
+// value stores: product/collection HANDLE, or the raw vendor/tag string
+// (vendor and tag values are stored lowercased for case-insensitive
+// matching, since SQLite doesn't support Prisma's `mode: "insensitive"`).
+model DeliveryRule {
+  id        Int    @id @default(autoincrement())
+  shop      String
+  ruleType  String // "product" | "collection" | "vendor" | "tag"
+  value     String
+  extraDays Int    @default(0)
+  label     String? // friendly display name shown in the admin UI
+
+  createdAt DateTime @default(now())
+
+  @@unique([shop, ruleType, value])
+}

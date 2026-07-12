@@ -1,0 +1,270 @@
+.smarteta-widget {
+    --smarteta-accent: #111827;
+    --smarteta-radius: 14px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: var(--smarteta-radius);
+    padding: 24px;
+    background: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 4px 16px rgba(16, 24, 40, 0.06);
+}
+
+.smarteta-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.smarteta-icon {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--smarteta-accent) 12%, white);
+    color: var(--smarteta-accent);
+}
+
+.smarteta-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.smarteta-header h3 {
+    margin: 0 0 2px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.smarteta-header p {
+    margin: 0;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.smarteta-search {
+    display: flex;
+    gap: 10px;
+}
+
+.smarteta-search input {
+    flex: 1;
+    min-width: 0;
+    height: 46px;
+    padding: 0 15px;
+    border: 1px solid #d1d5db;
+    border-radius: calc(var(--smarteta-radius) * 0.6);
+    font-size: 14px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.smarteta-search input:focus {
+    outline: none;
+    border-color: var(--smarteta-accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--smarteta-accent) 15%, transparent);
+}
+
+.smarteta-search button {
+    min-width: 96px;
+    border: none;
+    background: var(--smarteta-accent);
+    color: #fff;
+    border-radius: calc(var(--smarteta-radius) * 0.6);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s ease, opacity 0.15s ease;
+}
+
+.smarteta-search button:hover {
+    opacity: 0.9;
+}
+
+.smarteta-search button:active {
+    transform: scale(0.97);
+}
+
+.smarteta-search button:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.smarteta-result:empty {
+    margin-top: 0;
+}
+
+.smarteta-result > * {
+    margin-top: 18px;
+    animation: smarteta-fade-in 0.2s ease;
+}
+
+@keyframes smarteta-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading state */
+.smarteta-loading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    padding: 16px 18px;
+    border-radius: calc(var(--smarteta-radius) * 0.85);
+    color: #4b5563;
+    font-size: 14px;
+}
+
+.smarteta-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #d1d5db;
+    border-top-color: var(--smarteta-accent);
+    border-radius: 50%;
+    animation: smarteta-spin 0.7s linear infinite;
+    flex-shrink: 0;
+}
+
+@keyframes smarteta-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Success card */
+.smarteta-success {
+    display: flex;
+    gap: 12px;
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    padding: 18px;
+    border-radius: calc(var(--smarteta-radius) * 0.85);
+}
+
+.smarteta-success-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    color: #10b981;
+}
+
+.smarteta-success-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.smarteta-success-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.smarteta-eta {
+    margin: 0 0 2px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #065f46;
+}
+
+.smarteta-location {
+    margin: 0 0 12px;
+    font-size: 13px;
+    color: #047857;
+}
+
+.smarteta-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.smarteta-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.smarteta-badge-delivery {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.smarteta-badge-cod-yes {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.smarteta-badge-cod-no {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+/* Error card */
+.smarteta-error {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+    padding: 16px 18px;
+    border-radius: calc(var(--smarteta-radius) * 0.85);
+    font-size: 14px;
+}
+
+.smarteta-error-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+}
+
+.smarteta-error-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 380px) {
+    .smarteta-search {
+        flex-wrap: wrap;
+    }
+
+    .smarteta-search input,
+    .smarteta-search button {
+        width: 100%;
+    }
+}
+
+/* Countdown timer */
+.smarteta-countdown {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #9a3412;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 14px;
+    border-radius: calc(var(--smarteta-radius) * 0.7);
+    margin-bottom: 16px;
+}
+
+.smarteta-countdown strong {
+    font-variant-numeric: tabular-nums;
+}

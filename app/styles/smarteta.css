@@ -1,0 +1,338 @@
+*,
+*::before,
+*::after{
+    font-family: "Inter", -apple-system, BlinkMacSystemFont,
+                 "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-sizing:border-box;
+}
+
+.smarteta-page{
+max-width:1400px;
+margin:0 auto;
+padding:24px;
+}
+
+.smarteta-page-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:24px;
+gap:20px;
+}
+
+.smarteta-title{
+font-size:36px;
+font-weight:700;
+margin:0;
+color:#111827;
+}
+
+.smarteta-subtitle{
+color:#6b7280;
+margin-top:6px;
+}
+
+.smarteta-header-actions{
+display:flex;
+gap:12px;
+}
+
+.smarteta-btn{
+display:flex;
+background:#111827;
+color:#fff;
+border:none;
+padding:0 22px;
+border-radius:10px;
+font-weight:600;
+height:46px;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+}
+
+.smarteta-btn:hover{
+opacity:.92;
+}
+
+.smarteta-secondary-btn{
+background:#fff;
+border:1px solid #d1d5db;
+padding:12px 18px;
+border-radius:10px;
+height:46px;    
+cursor:pointer;
+font-weight:600;
+}
+
+.smarteta-secondary-btn:hover{
+background:#f9fafb;
+}
+
+.smarteta-grid{
+display:flex;
+flex-direction:column;
+gap:24px;
+}
+
+.smarteta-card{
+    background:#fff;
+    border-radius:16px;
+    padding:28px;
+    border:1px solid #E4E7EC;
+    margin-bottom:22px;
+    box-shadow:0 1px 3px rgba(0,0,0,.05);
+}
+
+.smarteta-card h2{
+margin-top:0;
+margin-bottom:20px;
+}
+
+.smarteta-alert-success{
+background:#ecfdf3;
+border:1px solid #86efac;
+color:#166534;
+}
+
+.smarteta-alert-danger{
+background:#fef2f2;
+border:1px solid #fca5a5;
+color:#991b1b;
+}
+
+.smarteta-alert-warning{
+background:#fffbeb;
+border:1px solid #fde68a;
+color:#92400e;
+}
+
+.smarteta-form-row{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(180px,1fr));
+    gap:18px;
+    align-items:end;
+}
+
+.smarteta-form-group{
+display:flex;
+flex-direction:column;
+}
+
+.smarteta-form-group label{
+font-size:14px;
+font-weight:600;
+margin-bottom:8px;
+}
+
+.smarteta-input,
+.smarteta-select{
+width:100%;
+height:46px;
+padding:0 16px;
+font-size:15px;
+border:1px solid #d1d5db;
+border-radius:10px;
+background:#fff;
+}
+
+.smarteta-input:focus,
+.smarteta-select:focus{
+outline:none;
+border-color:#2563eb;
+}
+
+.smarteta-table-toolbar{
+    display:flex;
+    gap:16px;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.smarteta-search{
+    flex:1;
+    min-width:320px;
+}
+
+.smarteta-filter{
+    width:180px;
+}
+
+.smarteta-stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+    gap:18px;
+    margin-bottom:28px;
+}
+
+.smarteta-stat-card{
+    background:#fff;
+    border-radius:14px;
+    padding:24px;
+    border:1px solid #e5e7eb;
+}
+
+.smarteta-stat-number{
+    font-size:38px;
+    font-weight:700;
+    margin-top:12px;
+}
+
+.smarteta-table-toolbar .smarteta-input{
+flex:1;
+min-width:300px;
+}
+
+.smarteta-total{
+background:#f3f4f6;
+padding:10px 14px;
+border-radius:10px;
+font-weight:600;
+}
+
+.smarteta-table{
+width:100%;
+border-collapse:collapse;
+overflow:hidden;
+border-radius:12px;
+}
+
+.smarteta-table th{
+background:#f9fafb;
+text-align:left;
+padding:18px;
+border-bottom:1px solid #e5e7eb;
+}
+
+.smarteta-table td{
+padding:18px;
+border-bottom:1px solid #f3f4f6;
+}
+
+.smarteta-table tr:hover{
+background:#f9fafb;
+}
+
+.smarteta-badge{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:6px 12px;
+border-radius:999px;
+font-size:12px;
+font-weight:600;
+}
+
+.smarteta-success{
+background:#dcfce7;
+color:#166534;
+}
+
+.smarteta-danger{
+background:#fee2e2;
+color:#991b1b;
+}
+
+.smarteta-action-group{
+display:flex;
+gap:8px;
+}
+
+.smarteta-edit-btn{
+background:#fff;
+border:1px solid #d1d5db;
+padding:8px 12px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.smarteta-btn-danger{
+background:#dc2626;
+color:#fff;
+border:none;
+padding:8px 12px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.smarteta-btn-danger:hover{
+opacity:.9;
+}
+
+.smarteta-help-card{
+margin-top:24px;
+background:#eff6ff;
+border:1px solid #bfdbfe;
+padding:20px;
+border-radius:14px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.smarteta-empty{
+text-align:center;
+padding:40px;
+color:#6b7280;
+}
+
+.smarteta-table-wrapper{
+overflow-x:auto;
+}
+
+@media(max-width:768px){
+
+.smarteta-page{
+padding:16px;
+}
+
+.smarteta-page-header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.smarteta-header-actions{
+width:100%;
+}
+
+.smarteta-header-actions button{
+flex:1;
+}
+
+.smarteta-table-toolbar{
+flex-direction:column;
+align-items:stretch;
+}
+
+.smarteta-help-card{
+flex-direction:column;
+align-items:flex-start;
+}
+}
+
+/* Edit modal */
+.smarteta-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 24, 39, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.smarteta-modal {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px;
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
