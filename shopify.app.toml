@@ -2,7 +2,7 @@
 
 client_id = "379336a22d6f940bdf3ec9648e101a4d"
 name = "SmartETA"
-application_url = "https://example.com"
+application_url = "https://smarteta.onrender.com"
 embedded = true
 
 [build]
@@ -13,10 +13,10 @@ automatically_update_urls_on_dev = true
 scopes = "write_products,write_metaobjects,write_metaobject_definitions"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [ "https://smarteta.onrender.com/api/auth" ]
 
 [app_proxy]
-url = "https://example.com/apps/smarteta"
+url = "https://smarteta.onrender.com/apps/smarteta"
 subpath = "smarteta"
 prefix = "apps"
 
