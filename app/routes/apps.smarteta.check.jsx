@@ -1,5 +1,6 @@
 import { authenticate } from "../shopify.server";
 import prisma from "../db.server";
+import { reportError } from "../sentry.server";
 import {
   calculateEstimatedDelivery,
   formatDeliveryDate,
@@ -153,6 +154,7 @@ export async function loader({ request }) {
     });
   } catch (err) {
     console.error(err);
+    reportError(err, { shop });
     return Response.json(
       { success: false, message: "Server Error" },
       { status: 500 },

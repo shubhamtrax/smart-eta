@@ -1,5 +1,6 @@
 import { authenticate } from "../shopify.server";
 import prisma from "../db.server";
+import { reportError } from "../sentry.server";
 
 // Shopify requires every public app to subscribe to these three topics.
 // Good news for SmartETA specifically: nothing in this app's schema stores
@@ -30,7 +31,7 @@ export const action = async ({ request }) => {
       // passed — erase everything tied to this shop across every table.
       const redactShop = payload?.shop_domain || shop;
 
-      await Promise.allSettled([
+      const results = await Promise.allSettled([
         prisma.pincodeRule.deleteMany({ where: { shop: redactShop } }),
         prisma.deliverySettings.deleteMany({ where: { shop: redactShop } }),
         prisma.holiday.deleteMany({ where: { shop: redactShop } }),
@@ -39,6 +40,17 @@ export const action = async ({ request }) => {
         prisma.deliveryRule.deleteMany({ where: { shop: redactShop } }),
         prisma.session.deleteMany({ where: { shop: redactShop } }),
       ]);
+
+      const failures = results.filter((r) => r.status === "rejected");
+      if (failures.length > 0) {
+        // This is compliance-critical — a silent failure here means we
+        // told Shopify we redacted data we actually didn't. Report loudly.
+        const err = new Error(
+          `SHOP_REDACT partially failed for ${redactShop}: ${failures.map((f) => f.reason).join("; ")}`,
+        );
+        console.error(err);
+        reportError(err, { shop: redactShop });
+      }
 
       console.log(`Redacted all data for ${redactShop}`);
       break;

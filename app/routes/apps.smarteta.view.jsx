@@ -1,5 +1,6 @@
 import { authenticate } from "../shopify.server";
 import prisma from "../db.server";
+import { reportError } from "../sentry.server";
 
 // Reached via https://{shop}.myshopify.com/apps/smarteta/view
 // Called once by the widget when it mounts on a product page, purely to
@@ -18,6 +19,7 @@ export async function loader({ request }) {
     });
   } catch (e) {
     console.error("Failed to log widget view", e);
+    reportError(e, { shop: session.shop });
   }
 
   return Response.json({ success: true });

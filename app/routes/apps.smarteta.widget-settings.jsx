@@ -1,5 +1,6 @@
 import { authenticate } from "../shopify.server";
 import prisma from "../db.server";
+import { reportError } from "../sentry.server";
 
 // Reached via https://{shop}.myshopify.com/apps/smarteta/widget-settings
 // Called by the widget on load so admin-configured text/colors take effect
@@ -34,6 +35,7 @@ export async function loader({ request }) {
     });
   } catch (err) {
     console.error(err);
+    reportError(err, { shop: session.shop });
     return Response.json({ success: false }, { status: 500 });
   }
 }

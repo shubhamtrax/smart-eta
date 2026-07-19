@@ -1,6 +1,7 @@
 import { authenticate } from "../shopify.server";
 import prisma from "../db.server";
 import { nowInTimeZone } from "../utils/delivery-date.server";
+import { reportError } from "../sentry.server";
 
 // Reached via https://{shop}.myshopify.com/apps/smarteta/countdown
 // Returns how many seconds remain until today's cutoff, computed in the
@@ -40,6 +41,7 @@ export async function loader({ request }) {
     });
   } catch (err) {
     console.error(err);
+    reportError(err, { shop });
     return Response.json({ success: false }, { status: 500 });
   }
 }
