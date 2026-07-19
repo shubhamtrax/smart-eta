@@ -18,34 +18,41 @@ export default function App() {
   return (
     <div className={styles.index}>
       <div className={styles.content}>
-        <h1 className={styles.heading}>A short heading about [your app]</h1>
-        <p className={styles.text}>
-          A tagline about [your app] that describes your value proposition.
+        <div className={styles.icon}>📍</div>
+
+        <h1 className={styles.heading}>SmartETA</h1>
+        <p className={styles.tagline}>
+          Accurate delivery dates by pincode, with smart rules and zero guesswork.
         </p>
+        <p className={styles.text}>
+          Show customers a real delivery date — not a generic "5-7 business days" — factoring in
+          your processing time, cutoff, holidays, and product-specific rules.
+        </p>
+
         {showForm && (
           <Form className={styles.form} method="post" action="/auth/login">
             <label className={styles.label}>
               <span>Shop domain</span>
-              <input className={styles.input} type="text" name="shop" />
-              <span>e.g: my-shop-domain.myshopify.com</span>
+              <input className={styles.input} type="text" name="shop" placeholder="my-shop-domain.myshopify.com" />
             </label>
             <button className={styles.button} type="submit">
               Log in
             </button>
           </Form>
         )}
+
         <ul className={styles.list}>
           <li>
-            <strong>Product feature</strong>. Some detail about your feature and
-            its benefit to your customer.
+            <strong>Pincode-level accuracy</strong>. Delivery dates calculated per pincode, not a
+            single estimate for every customer.
           </li>
           <li>
-            <strong>Product feature</strong>. Some detail about your feature and
-            its benefit to your customer.
+            <strong>Smart rules engine</strong>. Adjust delivery time by product, collection,
+            vendor, tag, or holiday — automatically.
           </li>
           <li>
-            <strong>Product feature</strong>. Some detail about your feature and
-            its benefit to your customer.
+            <strong>Built to convert</strong>. A countdown timer and customizable widget that
+            builds trust instead of vague promises.
           </li>
         </ul>
       </div>

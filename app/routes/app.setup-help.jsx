@@ -43,7 +43,7 @@ export default function SetupHelp() {
               href={themeEditorUrl}
               target="_top"
               className="smarteta-btn"
-              style={{ textDecoration: "none", display: "inline-block" }}
+              style={{ textDecoration: "none", display: "inline-flex" }}
             >
               Open Theme Editor
             </a>
@@ -78,7 +78,7 @@ export default function SetupHelp() {
           <a
             href="mailto:support@digitaltrax.in"
             className="smarteta-btn"
-            style={{ textDecoration: "none", display: "inline-block" }}
+            style={{ textDecoration: "none", display: "inline-flex" }}
           >
             Contact Support
           </a>
