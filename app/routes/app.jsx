@@ -22,6 +22,8 @@ export default function App() {
         <s-link href="/app/advanced-rules">Advanced Rules</s-link>
         <s-link href="/app/widget">Widget</s-link>
         <s-link href="/app/pincodes">Pincode Settings</s-link>
+        <s-link href="/app/setup-help">Setup & Help</s-link>
+        <s-link href="/app/subscription">Subscription Plan</s-link>
         <s-link href="/app/analytics">Analytics</s-link>
         <s-link href="/app/settings">Settings</s-link>
       </s-app-nav>

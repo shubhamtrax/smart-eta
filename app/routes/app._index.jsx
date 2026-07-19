@@ -117,6 +117,34 @@ export default function Dashboard() {
 
       </div>
 
+      <div
+        className="smarteta-card"
+        style={{
+          marginTop: "24px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: "12px",
+        }}
+      >
+        <div>
+          <h2 style={{ margin: 0 }}>Need help?</h2>
+          <p style={{ margin: "4px 0 0", color: "#6b7280", fontSize: "14px" }}>
+            If something isn't working as expected, or you have a question about setting up SmartETA,
+            reach out and we'll help you sort it out.
+          </p>
+        </div>
+
+        <a
+          href="mailto:support@digitaltrax.in"
+          className="smarteta-btn"
+          style={{ textDecoration: "none", whiteSpace: "nowrap" }}
+        >
+          Contact Support
+        </a>
+      </div>
+
     </div>
   );
 }
